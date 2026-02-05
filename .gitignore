@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local settings (user should not commit their local settings)
+# settings.local.json files in examples are fine for reference
+
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# Root level .claude directory (user's local settings for this project)
+/.claude/
