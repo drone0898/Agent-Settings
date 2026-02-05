@@ -17,5 +17,5 @@ node_modules/
 # Logs
 *.log
 
-# Root level .claude directory (user's local settings for this project)
-/.claude/
+# Root level .claude local settings (but allow hookify rules)
+/.claude/settings.local.json

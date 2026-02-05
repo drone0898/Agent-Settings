@@ -1,0 +1,22 @@
+#!/bin/bash
+# Pre-commit hook: 레포지토리 구조 검증
+# 설치: git config core.hooksPath .githooks
+
+echo "Pre-commit: 구조 검증 중..."
+
+# agents-md/에 CLAUDE.md 체크
+if git diff --cached --name-only | grep -q "agents-md/.*CLAUDE\.md"; then
+    echo "❌ Error: agents-md/에 CLAUDE.md 커밋 불가"
+    echo "   agents-md/는 범용 패턴만 허용 (AGENTS.md 사용)"
+    exit 1
+fi
+
+# agents-md/에 .claude/ 체크
+if git diff --cached --name-only | grep -q "agents-md/.*\.claude/"; then
+    echo "❌ Error: agents-md/에 .claude/ 커밋 불가"
+    echo "   agents-md/는 범용 패턴만 허용 (agents/ 사용)"
+    exit 1
+fi
+
+echo "✅ 구조 검증 통과"
+exit 0

@@ -1,0 +1,64 @@
+name: Validate Repository Structure
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check agents-md has no Claude-specific files
+        run: |
+          echo "Checking agents-md/ for Claude-specific files..."
+
+          # CLAUDE.md in agents-md/ is anti-pattern
+          if find agents-md -name "CLAUDE.md" | grep -q .; then
+            echo "❌ Error: CLAUDE.md found in agents-md/"
+            echo "   agents-md/ should only contain generic AGENTS.md"
+            find agents-md -name "CLAUDE.md"
+            exit 1
+          fi
+
+          # .claude/ directory in agents-md/ is anti-pattern
+          if find agents-md -type d -name ".claude" | grep -q .; then
+            echo "❌ Error: .claude/ directory found in agents-md/"
+            echo "   agents-md/ should use generic 'agents/' directory"
+            find agents-md -type d -name ".claude"
+            exit 1
+          fi
+
+          echo "✅ agents-md/ structure is valid"
+
+      - name: Check references have source links
+        run: |
+          echo "Checking references/ for source links..."
+
+          for file in references/*.md; do
+            if [ -f "$file" ] && [ "$(basename $file)" != "README.md" ]; then
+              if ! grep -q "출처.*\[.*\](http" "$file" && ! grep -q "Source.*\[.*\](http" "$file"; then
+                echo "❌ Error: $file missing source link"
+                echo "   References must include: > **출처**: [name](url)"
+                exit 1
+              fi
+            fi
+          done
+
+          echo "✅ All references have source links"
+
+      - name: Validate JSON files
+        run: |
+          echo "Validating JSON files..."
+
+          find . -name "*.json" -not -path "./.git/*" | while read file; do
+            if ! python3 -c "import json; json.load(open('$file'))"; then
+              echo "❌ Error: Invalid JSON in $file"
+              exit 1
+            fi
+          done
+
+          echo "✅ All JSON files are valid"
