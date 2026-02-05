@@ -12,12 +12,11 @@
 
 ```
 your-project/
-├── CLAUDE.md                    # AI 에이전트 지침
-├── .claude/
-│   └── agents/
-│       ├── history-load.md      # 세션 시작 시 상태 로드
-│       ├── history-save.md      # 세션 종료 시 상태 저장
-│       └── history-archive.md   # 오래된 세션 아카이브
+├── AGENTS.md                    # AI 에이전트 지침 (범용)
+├── agents/                      # 서브에이전트 (도구 중립적)
+│   ├── history-load.md          # 세션 시작 시 상태 로드
+│   ├── history-save.md          # 세션 종료 시 상태 저장
+│   └── history-archive.md       # 오래된 세션 아카이브
 └── agent/
     └── history/
         ├── current_state.md     # 현재 프로젝트 상태
@@ -71,7 +70,17 @@ history-save 실행
 
 ## 사용법
 
-1. `.claude/agents/` 디렉토리에 에이전트 파일 복사
+1. `agents/` 디렉토리에 에이전트 파일 복사
 2. `agent/history/` 디렉토리 구조 생성
-3. `CLAUDE.md`에 히스토리 사용 지침 추가
+3. `AGENTS.md`에 히스토리 사용 지침 추가
 4. 세션 시작/종료 시 에이전트 호출
+
+## 도구별 적용
+
+| 도구 | 에이전트 지침 파일 | 서브에이전트 위치 |
+|------|------------------|------------------|
+| Claude Code | `CLAUDE.md` | `.claude/agents/` |
+| Cursor | `AGENTS.md` | 프로젝트 루트 |
+| 기타 | `AGENTS.md` | 프로젝트별 상이 |
+
+범용 패턴이므로 각 도구에 맞게 파일명과 위치를 조정하세요.
