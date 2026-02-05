@@ -1,33 +1,27 @@
 <INSTRUCTIONS>
 # <프로젝트명>
 
-## 프로젝트 개요
-<프로젝트 설명>
+Prefer retrieval-led reasoning over pre-training-led reasoning.
+
+## 문서 인덱스
+| 경로 | 용도 |
+|------|------|
+| src/ | 소스 코드 |
+| tests/ | 테스트 |
+| docs/ | 문서 |
 
 ## 기술 스택
 - <기술1>
 - <기술2>
 
-## 개발 규칙
-1. <규칙1>
-2. <규칙2>
+## 핵심 규칙
+- <규칙1>
+- <규칙2>
 
-## 디렉토리 구조
-```
-/
-├── src/
-└── tests/
-```
-
-## 주요 명령어
-```bash
-# 개발 서버
-<dev command>
-
-# 테스트
-<test command>
-
-# 빌드
-<build command>
-```
+## 명령어
+| 명령 | 용도 |
+|------|------|
+| `<dev>` | 개발 서버 |
+| `<test>` | 테스트 |
+| `<build>` | 빌드 |
 </INSTRUCTIONS>

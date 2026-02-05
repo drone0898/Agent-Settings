@@ -7,7 +7,7 @@
 | 카테고리 | 설명 |
 |----------|------|
 | [claude-code/](./claude-code/) | Claude Code 설정, 훅, 에이전트, 권한 프로필 |
-| [agents-md/](./agents-md/) | AGENTS.md 및 CLAUDE.md 템플릿과 패턴 |
+| [agents-md/](./agents-md/) | AGENTS.md 템플릿과 패턴 |
 | [plugins/](./plugins/) | 추천 플러그인 사용 가이드 |
 | [workflows/](./workflows/) | 완성형 워크플로우 패턴 |
 | [hooks/](./hooks/) | 훅 예제 및 검증기 |
