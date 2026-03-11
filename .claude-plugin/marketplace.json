@@ -1,0 +1,12 @@
+{
+  "name": "agent-settings",
+  "owner": { "name": "Agent-Settings" },
+  "plugins": [
+    {
+      "name": "install-hook",
+      "source": "./claude-code/plugins/install-hook",
+      "description": "Interactively install Claude Code hooks",
+      "version": "1.0.0"
+    }
+  ]
+}

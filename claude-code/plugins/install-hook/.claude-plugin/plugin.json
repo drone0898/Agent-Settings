@@ -1,0 +1,8 @@
+{
+  "name": "install-hook",
+  "version": "1.0.0",
+  "description": "Interactively install Claude Code hooks into settings files",
+  "author": { "name": "Agent-Settings" },
+  "license": "MIT",
+  "keywords": ["hooks", "setup", "automation"]
+}
